@@ -6,7 +6,7 @@ export default class Modell {
     this.#lista = lista;
   }
 
-  getAdat(vegpont,callback) {
+  getAdat(vegpont, callback, hibaCallback) {
     /*  lekérdezzük a listába az adatokat a végpontról. 
         FETCH segítségével
         Asszinkron módon
@@ -18,7 +18,9 @@ export default class Modell {
         console.log(this.#lista);
         callback(this.#lista);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {   
+          hibaCallback(error.message);
+      });
   }
   deleteAdat() {}
   postAdat() {}

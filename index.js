@@ -8,7 +8,7 @@ const TAROLO = document.querySelector(".tarolo");
 let LISTA = [];
 
 const modell=new Modell(LISTA)
-modell.getAdat("http://fakestoreapi.com/products",adminPeldanyosit)
+modell.getAdat("http://fakestoreapi.com/products",adminPeldanyosit,hibaCallback)
 
 TERMEKEKGOMB.addEventListener("click", () => {
   TAROLO.innerHTML = `<article class="col-lg-9"> Termékek</article>
@@ -25,6 +25,9 @@ ADMINGOMB.addEventListener("click", () => {
 function adminPeldanyosit(lista) {
     TAROLO.insertAdjacentHTML("beforeend",`<article class="col-lg-12"> Admin</article>`);
     new AdminTermekek(lista, TAROLO.querySelector("article"));
+}
+function hibaCallback(error) {
+   console.log(error)
 }
 
 window.addEventListener("torol",(event)=>{
